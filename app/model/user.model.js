@@ -10,28 +10,24 @@ UserModel.init({
         primaryKey: true
     },
     name: {
-        type: DataTypes.STRING(200),
+        type: DataTypes.STRING(255),
         allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING(200),
+    password: {
+        type: DataTypes.STRING(255),
       allowNull: false,
     },
-   //  email: {
-   //      type: DataTypes.STRING(150),
-   //      allowNull: false,
-   //  },
-   //  password: {
-   //      type: DataTypes.STRING(250),
-   //      allowNull: false,
-   //  },
-   //  created_at: {
-   //      type: DataTypes.STRING(20),
-   //      allowNull: true,
-   //  }
+    email: {
+        type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
 }, {
     sequelize: DataBaseConfig,
-    modelName: 'user',
+    modelName: 'user',  
     timestamps: false,
-    tableName: 'user',
+    tableName: 'user_2', // Permite cambiar el nombre de la tabla en la base de datos
 });

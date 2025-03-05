@@ -4,6 +4,7 @@ import express from 'express';
 import 'dotenv/config'
 import { UserRoutes } from './routes/user.routes.js';
 import { Database } from './config/database.config.js'
+import cors from 'cors';
 
 // Creación de la instacia de express
 const app = express();
@@ -12,6 +13,12 @@ const port = process.env.APP_PORT || 3001; // Puerto de la app
 // Middlewares
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.use(cors(
+  {
+    origin: '*',
+    
+  }
+))
 
 
 // Instancia de la conexión a la base de datos en MariaDB con XAMPP

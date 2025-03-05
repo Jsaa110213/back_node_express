@@ -27,16 +27,21 @@ export class UserRoutes {
 
       });
 
-      app.post('/get-users', async(req, res) => {
+      app.post('/get-user', async(req, res) => { // Mucho cuidado con el nombre
 
          try {
             const {condition} = req.body;
+            console.log('condition', condition)
+
             const user = await UserModel.findAll({
                where: condition
             });
 
-            console.log('user', user);
-            res.status(200).send({ ok: true, data: user })
+            if (user.length > 0) {
+               res.status(200).send({ ok: true, data: user })
+            } else {
+               res.status(200).send({ ok: false, message: 'User not found' })
+            }
 
          } catch (error) {
             console.log('Error', error);
@@ -60,7 +65,7 @@ export class UserRoutes {
 
       });
 
-      app.put('/update-user', async(req, res) => {
+      app.post('/update-user', async(req, res) => {
 
          const { condition, user } = req.body
 
